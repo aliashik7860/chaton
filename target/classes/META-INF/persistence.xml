@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="ChatOn">
+		<class>com.appdevsolutions.chat.dao.entity.EmailTemplate</class>
+		<class>com.appdevsolutions.chat.dao.entity.EmailNotificationTemplate</class>
+		<class>com.appdevsolutions.chat.dao.entity.FriendShip</class>
+		<class>com.appdevsolutions.chat.dao.entity.Audio</class>
+		<class>com.appdevsolutions.chat.dao.entity.File</class>
+		<class>com.appdevsolutions.chat.dao.entity.Message</class>
+		<class>com.appdevsolutions.chat.dao.entity.Photo</class>
+		<class>com.appdevsolutions.chat.dao.entity.Video</class>
+		<class>com.appdevsolutions.chat.dao.entity.ProfilePhoto</class>
+		<class>com.appdevsolutions.chat.dao.entity.Privilege</class>
+		<class>com.appdevsolutions.chat.dao.entity.Role</class>
+		<class>com.appdevsolutions.chat.dao.entity.User</class>
+		<class>com.appdevsolutions.chat.dao.entity.Name</class>
+		<class>com.appdevsolutions.chat.dao.entity.Address</class>
+		<class>com.appdevsolutions.chat.dao.entity.PrimaryKeysInfo</class>
+		<properties>
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/test" />
+			<property name="javax.persistence.jdbc.user" value="root" />
+			<property name="javax.persistence.jdbc.password" value="pass" />
+			<!-- EclipseLink should create the database schema automatically -->
+			<property name="eclipselink.ddl-generation" value="create-tables" />
+			<property name="eclipselink.ddl-generation.output-mode" value="database" />
+			<property name="eclipselink.logging.level" value="FINE" />
+		</properties>
+	</persistence-unit>
+</persistence>

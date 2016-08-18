@@ -1,0 +1,135 @@
+package com.appdevsolutions.chat.web.config;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+
+import com.appdevsolutions.chat.web.interceptor.CreateEmailNotificationTemplateByIdRequestInterceptor;
+import com.appdevsolutions.chat.web.interceptor.CreateEmailNotificationTemplateByNameRequestInterceptor;
+import com.appdevsolutions.chat.web.interceptor.CreateEmailNotificationTemplateBySubjectRequestInterceptor;
+import com.appdevsolutions.chat.web.interceptor.CreateEmailTemplateRequestInterceptor;
+import com.appdevsolutions.chat.web.interceptor.CreateErrorCodeRequestInterceptor;
+import com.appdevsolutions.chat.web.interceptor.CreateFriendShipModelRequestInterceptor;
+import com.appdevsolutions.chat.web.interceptor.CreateMessageRequestInterceptor;
+import com.appdevsolutions.chat.web.interceptor.CreatePrivilegeRequestInterceptor;
+import com.appdevsolutions.chat.web.interceptor.CreateRoleRequestInterceptor;
+import com.appdevsolutions.chat.web.interceptor.CreateUserRequestInterceptor;
+import com.appdevsolutions.chat.web.interceptor.UpdateEmailTemplateBodyByIdRequestInterceptor;
+import com.appdevsolutions.chat.web.interceptor.UpdateEmailTemplateBodyByNameRequestInterceptor;
+import com.appdevsolutions.chat.web.interceptor.UpdateEmailTemplateBodyBySubjectRequestInterceptor;
+import com.appdevsolutions.chat.web.interceptor.UpdateEmailTemplateFromByIdRequestInterceptor;
+import com.appdevsolutions.chat.web.interceptor.UpdateEmailTemplateFromByNameRequestInterceptor;
+import com.appdevsolutions.chat.web.interceptor.UpdateEmailTemplateFromBySubjectRequestInterceptor;
+import com.appdevsolutions.chat.web.interceptor.UpdateEmailTemplateNameRequestInterceptor;
+import com.appdevsolutions.chat.web.interceptor.UpdateEmailTemplateSubjectRequestInterceptor;
+import com.appdevsolutions.chat.web.interceptor.UpdatePasswordRequestInterceptor;
+import com.appdevsolutions.chat.web.interceptor.UpdatePrivilegeRequestInterceptor;
+import com.appdevsolutions.chat.web.interceptor.UpdateRoleRequestInterceptor;
+import com.appdevsolutions.chat.web.model.ChatOnWebConstants;
+
+@Configuration
+@EnableWebMvc
+@ComponentScan("com.appdevsolutions.chat.web.*")
+public class WebMVCConfig extends WebMvcConfigurerAdapter{
+	
+	private static final String RESOURCES_PATTERN="/resources/**";
+	private static final String RESOURCES_LOCATION="/resources/";
+	
+	@Autowired
+	CreateMessageRequestInterceptor createMessageRequestInterceptor;
+	
+	@Autowired
+	UpdatePasswordRequestInterceptor updatePasswordRequestInterceptor;
+	
+	@Autowired
+	CreateRoleRequestInterceptor createRoleRequestInterceptor;
+	
+	@Autowired
+	UpdateRoleRequestInterceptor updateRoleRequestInterceptor;
+	
+	@Autowired
+	CreatePrivilegeRequestInterceptor createPrivilegeRequestInterceptor;
+	
+	@Autowired
+	UpdatePrivilegeRequestInterceptor updatePrivilegeRequestInterceptor;
+	
+	@Autowired
+	CreateEmailTemplateRequestInterceptor createEmailTemplateRequestInterceptor;
+	
+	@Autowired
+	UpdateEmailTemplateNameRequestInterceptor updateEmailTemplateNameRequestInterceptor;
+	
+	@Autowired
+	UpdateEmailTemplateSubjectRequestInterceptor updateEmailTemplateSubjectRequestInterceptor;
+	
+	@Autowired
+	UpdateEmailTemplateFromByIdRequestInterceptor updateEmailTemplateFromByIdRequestInterceptor;
+	
+	@Autowired
+	UpdateEmailTemplateFromByNameRequestInterceptor updateEmailTemplateFromByNameRequestInterceptor;
+	
+	@Autowired
+	UpdateEmailTemplateFromBySubjectRequestInterceptor updateEmailTemplateFromBySubjectRequestInterceptor;
+	
+	@Autowired
+	UpdateEmailTemplateBodyByIdRequestInterceptor updateEmailTemplateBodyByIdRequestInterceptor;
+	
+	@Autowired
+	UpdateEmailTemplateBodyByNameRequestInterceptor updateEmailTemplateBodyByNameRequestInterceptor;
+	
+	@Autowired
+	UpdateEmailTemplateBodyBySubjectRequestInterceptor updateEmailTemplateBodyBySubjectRequestInterceptor;
+	
+	@Autowired
+	CreateUserRequestInterceptor createUserRequestInterceptor;
+	
+	@Autowired
+	CreateErrorCodeRequestInterceptor createErrorCodeRequestInterceptor;
+	
+	@Autowired
+	CreateEmailNotificationTemplateByIdRequestInterceptor createEmailNotificationTemplateByIdRequestInterceptor;
+	
+	@Autowired
+	CreateEmailNotificationTemplateByNameRequestInterceptor createEmailNotificationTemplateByNameRequestInterceptor;
+	
+	@Autowired
+	CreateEmailNotificationTemplateBySubjectRequestInterceptor createEmailNotificationTemplateBySubjectRequestInterceptor;
+	
+	@Autowired
+	CreateFriendShipModelRequestInterceptor createFriendShipModelRequestInterceptor;
+	
+	
+	@Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler(RESOURCES_PATTERN).addResourceLocations(RESOURCES_LOCATION);
+    }
+	
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {
+		registry.addInterceptor(createMessageRequestInterceptor).addPathPatterns(ChatOnWebConstants.URL_HOME_MESSAGE_CREATE);
+		registry.addInterceptor(updatePasswordRequestInterceptor).addPathPatterns(ChatOnWebConstants.URL_HOME_USERS_UPDATE_PASSWORD);
+		registry.addInterceptor(createRoleRequestInterceptor).addPathPatterns(ChatOnWebConstants.URL_HOME_ROLE_CREATE);
+		registry.addInterceptor(updateRoleRequestInterceptor).addPathPatterns(ChatOnWebConstants.URL_HOME_ROLE_UPDATE_NAME_BY_ID);
+		registry.addInterceptor(createPrivilegeRequestInterceptor).addPathPatterns(ChatOnWebConstants.URL_HOME_PRIVILEGE_CREATE);
+		registry.addInterceptor(updatePrivilegeRequestInterceptor).addPathPatterns(ChatOnWebConstants.URL_HOME_PRIVILEGE_UPDATE_NAME_BY_ID);
+		registry.addInterceptor(createEmailTemplateRequestInterceptor).addPathPatterns(ChatOnWebConstants.URL_HOME_EMAIL_TEMPLATE_CREATE);
+		registry.addInterceptor(updateEmailTemplateNameRequestInterceptor).addPathPatterns(ChatOnWebConstants.URL_HOME_EMAIL_TEMPLATE_UPDATE_BY_NAME);
+		registry.addInterceptor(updateEmailTemplateSubjectRequestInterceptor).addPathPatterns(ChatOnWebConstants.URL_HOME_EMAIL_TEMPLATE_UPDATE_BY_SUBJECT);
+		registry.addInterceptor(updateEmailTemplateFromByIdRequestInterceptor).addPathPatterns(ChatOnWebConstants.URL_HOME_EMAIL_TEMPLATE_FROM_BY_ID);
+		registry.addInterceptor(updateEmailTemplateFromByNameRequestInterceptor).addPathPatterns(ChatOnWebConstants.URL_HOME_EMAIL_TEMPLATE_FROM_BY_NAME);
+		registry.addInterceptor(updateEmailTemplateFromBySubjectRequestInterceptor).addPathPatterns(ChatOnWebConstants.URL_HOME_EMAIL_TEMPLATE_FROM_BY_SUBJECT);
+		registry.addInterceptor(updateEmailTemplateBodyByIdRequestInterceptor).addPathPatterns(ChatOnWebConstants.URL_HOME_EMAIL_TEMPLATE_BODY_BY_ID);
+		registry.addInterceptor(updateEmailTemplateBodyByNameRequestInterceptor).addPathPatterns(ChatOnWebConstants.URL_HOME_EMAIL_TEMPLATE_BODY_BY_NAME);
+		registry.addInterceptor(updateEmailTemplateBodyBySubjectRequestInterceptor).addPathPatterns(ChatOnWebConstants.URL_HOME_EMAIL_TEMPLATE_BODY_BY_SUBJECT);
+		registry.addInterceptor(createUserRequestInterceptor).addPathPatterns(ChatOnWebConstants.URL_SIGN_UP,ChatOnWebConstants.URL_SIGN_UP_ADMIN);
+		registry.addInterceptor(createErrorCodeRequestInterceptor).addPathPatterns(ChatOnWebConstants.URL_HOME_ERROR_CODE);
+		registry.addInterceptor(createEmailNotificationTemplateByIdRequestInterceptor).addPathPatterns(ChatOnWebConstants.URL_HOME_EMAIL_NOTIFICATION_TEMPLATE_SAVE_BY_ID);
+		registry.addInterceptor(createEmailNotificationTemplateByNameRequestInterceptor).addPathPatterns(ChatOnWebConstants.URL_HOME_EMAIL_NOTIFICATION_TEMPLATE_SAVE_BY_NAME);
+		registry.addInterceptor(createEmailNotificationTemplateBySubjectRequestInterceptor).addPathPatterns(ChatOnWebConstants.URL_HOME_EMAIL_NOTIFICATION_TEMPLATE_SAVE_BY_SUBJECT);
+		registry.addInterceptor(createFriendShipModelRequestInterceptor).addPathPatterns(ChatOnWebConstants.URL_HOME_FRIEND_SHIP_CREATE);
+	}
+}

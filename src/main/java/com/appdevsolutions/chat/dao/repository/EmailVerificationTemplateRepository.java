@@ -1,0 +1,12 @@
+package com.appdevsolutions.chat.dao.repository;
+
+public interface EmailVerificationTemplateRepository {
+	/*public void saveEmailVerificationTemplate(EmailVerificationTemplate emailVerificationTemplate);
+	public EmailVerificationTemplate getEmailVerificationTemplateByUserId(String userId)throws EntityNotFoundException;
+	public EmailVerificationTemplate getEmailVerificationTemplateByUsername(String username)throws EntityNotFoundException;
+	public void deleteEmailVerificationTemplateByUserId(String userId)throws EntityNotFoundException;
+	public void deleteEmailVerificationTemplateByUsername(String username)throws EntityNotFoundException;
+	public void updateEmailVerificationTemplateByUserId(EmailVerificationTemplate emailVerificationTemplate);
+	public boolean isEmailVerifiedByUserId(String userId)throws EntityNotFoundException;
+	public boolean isEmailVefifiedByUsername(String username)throws EntityNotFoundException;*/
+}

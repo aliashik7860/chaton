@@ -1,0 +1,36 @@
+package com.appdevsolutions.chat.web.service;
+
+import java.util.Set;
+
+import com.appdevsolutions.chat.web.exception.EmailNotificationTemplateAlreadyExistException;
+import com.appdevsolutions.chat.web.exception.EmailNotificationTemplateNotFoundException;
+import com.appdevsolutions.chat.web.exception.EmailTemplateNotFoundException;
+import com.appdevsolutions.chat.web.exception.UserNotFoundException;
+import com.appdevsolutions.chat.web.model.EmailNotificationTemplateModel;
+
+public interface EmailNotificationTemplateService
+{
+	public void saveById(String emailTemplateId, String userId)throws EmailTemplateNotFoundException,UserNotFoundException,EmailNotificationTemplateAlreadyExistException;
+	public void saveByName(String emailTemplateName, String userId)throws EmailTemplateNotFoundException,UserNotFoundException,EmailNotificationTemplateAlreadyExistException;
+	public void saveBySubject(String emailTemplateSubject, String userId)throws EmailTemplateNotFoundException,UserNotFoundException,EmailNotificationTemplateAlreadyExistException;
+	public Set<EmailNotificationTemplateModel> getByAll();
+	public EmailNotificationTemplateModel getById(String id)throws EmailNotificationTemplateNotFoundException;
+	public Set<EmailNotificationTemplateModel> getByEmailTemplateId(String emailTemplateId)throws EmailTemplateNotFoundException, EmailNotificationTemplateNotFoundException;
+	public Set<EmailNotificationTemplateModel> getByEmailTemplateIdWithUserId(String emailTemplateId, String userId)throws EmailTemplateNotFoundException, UserNotFoundException, EmailNotificationTemplateNotFoundException;
+	public Set<EmailNotificationTemplateModel> getByEmailTemplateName(String emailTemplateName)throws EmailTemplateNotFoundException, EmailNotificationTemplateNotFoundException;
+	public Set<EmailNotificationTemplateModel> getByEmailTemplateNameWithUserId(String emailTemplateName, String userId)throws EmailTemplateNotFoundException, UserNotFoundException, EmailNotificationTemplateNotFoundException;
+	public Set<EmailNotificationTemplateModel> getByUserId(String userId)throws UserNotFoundException, EmailNotificationTemplateNotFoundException;
+	public void removeById(String emailNotificationTemplateId)throws EmailNotificationTemplateNotFoundException;
+	public void removeByUserId(String userId)throws UserNotFoundException, EmailNotificationTemplateNotFoundException;
+	public void removeByEmailTemplateId(String emailTemplateId)throws EmailTemplateNotFoundException, EmailNotificationTemplateNotFoundException;
+	public void removeByEmailTemplateIdWithUserId(String emailTemplateId, String userId)throws EmailTemplateNotFoundException, UserNotFoundException, EmailNotificationTemplateNotFoundException;
+	public void removeByEmailTemplateName(String emailTemplateName)throws EmailTemplateNotFoundException, EmailNotificationTemplateNotFoundException;
+	public void removeByEmailTemplateNameWithUserId(String emailTemplateName, String userId)throws EmailTemplateNotFoundException, UserNotFoundException, EmailNotificationTemplateNotFoundException;
+	public boolean isActive(String id)throws EmailNotificationTemplateNotFoundException;
+	public void setActiveById(String emailNotificationTemplateId,boolean state) throws EmailNotificationTemplateNotFoundException;
+	public void setActiveByUserId(String userId,boolean state) throws UserNotFoundException, EmailNotificationTemplateNotFoundException;
+	public void setActiveByEmailTemplateId(String emailTemplateId, boolean state) throws EmailTemplateNotFoundException,EmailNotificationTemplateNotFoundException;
+	public void setActiveByEmailTemplateName(String emailTemplateName, boolean state) throws EmailTemplateNotFoundException,EmailNotificationTemplateNotFoundException;
+	public void setActiveByEmailTemplateIdWithUserId(String emailTemplateId, String userId, boolean state) throws EmailTemplateNotFoundException, UserNotFoundException, EmailNotificationTemplateNotFoundException;
+	public void setActiveByEmailTemplateNameWithUserId(String emailTemplateName, String userId, boolean state) throws EmailTemplateNotFoundException, UserNotFoundException, EmailNotificationTemplateNotFoundException;
+}
